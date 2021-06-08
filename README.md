@@ -1,7 +1,7 @@
 # CN332 Project Bubble Tea
 #### เป็น application สำหรับสั่งชานมไข่มุก โดยจะมีระบบ log-in/log-out ระบบสั่งซื้อ และระบบคิดเงิน
-#### ใช้ pattern - ในส่วนของ 
-#### ใช้ pattern - ในส่วนของ -
+#### ใช้ factory pattern - ในส่วนของการสั่งชนิดของเครื่องดื่มและ topping - 
+#### ใช้ strategy pattern - ในส่วนของ -
 
 ##
 ##
