@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CartView: View {
-    @EnvironmentObject var teaList: TeaList
+    @State var teaFactory: TeaFactory
     @Binding var showCartView: Bool
     @State private var showingResultAlert = false
 
@@ -16,38 +16,19 @@ struct CartView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(teaList.orders){ order in
+                    ForEach(teaFactory.orders){ order in
                         HStack {
                             Text(order.name)
                             Spacer()
-                            Image(systemName: "minus.circle.fill")
-                            Text("1")
-                                .padding(.leading)
-                                .padding(.trailing)
-                            Image(systemName: "plus.circle.fill")
-                            
-                            Text(order.price)
+                            Text("\(order.price) ฿")
                                 .padding()
                         }
                         .padding()
                     }
                     
-//                    HStack {
-//                        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//                        Spacer()
-//                        Image(systemName: "minus.circle.fill")
-//                        Text("1")
-//                            .padding(.leading)
-//                            .padding(.trailing)
-//                        Image(systemName: "plus.circle.fill")
-//
-//                        Text("500")
-//                            .padding()
-//                    }
-//                    .padding()
-                    
                 }
-                Text("Total: \(teaList.allPrice())")
+                Text(discountStrategy(price: teaFactory.allPrice(), orderCount: teaFactory.orders.count))
+                
                 HStack{
                     Spacer()
                     Button(action: {
@@ -62,7 +43,7 @@ struct CartView: View {
 
                     Button(action: {
                         showingResultAlert.toggle()
-                        teaList.clearArray()
+                        teaFactory.clearArray()
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)
@@ -83,7 +64,7 @@ struct CartView: View {
                     .padding()
                     Spacer()
                     Button(action: {
-                        teaList.clearArray()
+                        teaFactory.clearArray()
                     }, label: {
                         Image(systemName: "trash.fill")
                             .resizable()
@@ -100,16 +81,27 @@ struct CartView: View {
         
         
     }
+    func discountStrategy(price: String, orderCount: Int) -> String {
+        var priceAfterDiscount = Int(price)!
+        if orderCount > 3 {
+            priceAfterDiscount = priceAfterDiscount - 10
+            priceAfterDiscount = priceAfterDiscount - 20
+            return "Discount for order over 50 ฿ : -10 ฿\nDiscount for order more than 3 order : -20 ฿\nTotal: \(priceAfterDiscount) ฿"
+            
+        } else if priceAfterDiscount >= 50 {
+            priceAfterDiscount = priceAfterDiscount - 10
+            return "Discount for order over 50 ฿ : -10 ฿\nTotal: \(priceAfterDiscount) ฿"
+        } else {
+            return "Total: \(priceAfterDiscount) ฿"
+        }
+        
+    }
 }
 
-struct A: Identifiable {
-    let id: String
-    let c: Tea
-}
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView(showCartView: .constant(true))
-            .environmentObject(TeaList())
+        CartView(teaFactory: TeaFactory(), showCartView: .constant(true))
+            .environmentObject(TeaFactory())
     }
 }

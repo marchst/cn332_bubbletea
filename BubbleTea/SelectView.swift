@@ -2,22 +2,22 @@
 //  SelectView.swift
 //  Pods
 //
-//  Created by Surapunya Thongdee on 6/6/2564 BE.
+//  Created by Surapunya Thongdee on 1/6/2564 BE.
 //
 
 import SwiftUI
 
 struct SelectView: View {
     @State var teas: [Tea]
-    @EnvironmentObject var teaList: TeaList
-    @EnvironmentObject var toppingList: ToppingList
+    @State var teaFactory: TeaFactory
+    @EnvironmentObject var toppingFactory: ToppingFactory
     @Binding var showSelectView: Bool
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     ForEach(teas) { tea in
-                        NavigationLink( destination: SelectToppingView(teaList: teaList, tea: tea, toppings: toppingList.toppings)){
+                        NavigationLink( destination: SelectToppingView(teaFactory: teaFactory, tea: tea, toppings: toppingFactory.toppings)){
 
                             HStack {
                                 Text(tea.name)
@@ -50,8 +50,8 @@ struct SelectView: View {
 
 struct SelectView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectView(teas: [], showSelectView: .constant(false))
-            .environmentObject(TeaList())
-            .environmentObject(ToppingList())
+        SelectView(teas: [], teaFactory: TeaFactory(), showSelectView: .constant(false))
+            .environmentObject(TeaFactory())
+            .environmentObject(ToppingFactory())
     }
 }

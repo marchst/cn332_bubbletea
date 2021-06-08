@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var teaList: TeaList
+    @EnvironmentObject var teaFactory: TeaFactory
     @State private var tea = ""
     @State private var topping = ""
     @State private var showTeaMenu = false
@@ -17,10 +17,6 @@ struct HomeView: View {
     @State private var showMenu = false
     @State private var showSelectView = false
     
-    var arrayOfTea = ["นมสด", "ชานม", "กาแฟ", "ชาไทย", "ชาเขียว", "ชานมเผือก"]
-    @State private var selectedTeaIndex = 0
-    var arrayOfTopping = ["-", "ไข่มุก", "เยลลี่ฟรุตตี้", "บราวชูการ์", "เฉาก๊วย", "ไข่มุกป๊อป"]
-    @State private var selectedToppingIndex = 0
     var body: some View {
         VStack {
             Image("logo2")
@@ -43,7 +39,7 @@ struct HomeView: View {
                     
                 })
                 .sheet(isPresented: $showSelectView) {
-                    SelectView(teas: teaList.teas, showSelectView: $showSelectView)
+                    SelectView(teas: teaFactory.teas, teaFactory: teaFactory, showSelectView: $showSelectView)
                 }
                 .padding()
                 
@@ -83,72 +79,13 @@ struct HomeView: View {
                     
                 })
                 .sheet(isPresented: $showCartView) {
-                    CartView(showCartView: $showCartView)
+                    CartView(teaFactory: teaFactory,showCartView: $showCartView)
                 }
                 .padding()
                 
        
             }
             
-            
-            
-            //            HStack {
-            //                Text("เลือกน้ำ : ")
-            //                Text(arrayOfTea[selectedTeaIndex])
-            //                    .padding()
-            //                    .onTapGesture {
-            //                        showTeaMenu.toggle()
-            //                    }
-            //            }
-            
-            //            if showTeaMenu {
-            //                Picker("", selection: $selectedTeaIndex) {
-            //                    ForEach(0 ..< arrayOfTea.count) {
-            //                        Text("\(self.arrayOfTea[$0])                                \(findPrice(teaName: self.arrayOfTea[$0]))")
-            //                        //                                Text(findPrice(teaName: self.arrayOfTea[$0]))
-            //
-            //                    }
-            //                }
-            ////                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            //                Button(action: {
-            //                    showTeaMenu.toggle()
-            //                }, label: {
-            //                    Text("OK")
-            //                })
-            //                .padding()
-            //            }
-            //
-            //            HStack {
-            //                Text("เลือกท็อปปิ้ง : ")
-            //                Text(arrayOfTopping[selectedToppingIndex])
-            //                    .padding()
-            //                    .onTapGesture {
-            //                        showToppingMenu.toggle()
-            //                    }
-            //            }
-            //
-            //            if showToppingMenu {
-            //                Picker("", selection: $selectedToppingIndex) {
-            //                    ForEach(0 ..< arrayOfTopping.count) {
-            //                        Text(self.arrayOfTopping[$0])
-            //                    }
-            //                }
-            //                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            //                Button(action: {
-            //                    showToppingMenu.toggle()
-            //                }, label: {
-            //                    Text("OK")
-            //                })
-            //                .padding()
-            //
-            //
-            //            }
-            
-            //            NavigationLink(destination: BubbleTeaFactory(tea: arrayOfTea[selectedTeaIndex], topping: arrayOfTopping[selectedToppingIndex])) {
-            //                Image(systemName: "plus.circle.fill")
-            //                    .resizable()
-            //                    .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            //            }
             
             
             .padding()
@@ -165,8 +102,8 @@ struct HomeView: View {
         
     }
     func findPrice (teaName: String) -> String {
-        if let _ = teaList.teas.first(where: {$0.name == teaName}) {
-            let filteredName = teaList.teas.filter {$0.name == teaName }
+        if let _ = teaFactory.teas.first(where: {$0.name == teaName}) {
+            let filteredName = teaFactory.teas.filter {$0.name == teaName }
             return filteredName[0].price
         } else {
             return ""
@@ -177,6 +114,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(TeaList())
+            .environmentObject(TeaFactory())
     }
 }

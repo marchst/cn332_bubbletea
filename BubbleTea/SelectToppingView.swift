@@ -2,13 +2,13 @@
 //  SelectToppingView.swift
 //  BubbleTea
 //
-//  Created by Surapunya Thongdee on 7/6/2564 BE.
+//  Created by Surapunya Thongdee on 1/6/2564 BE.
 //
 
 import SwiftUI
 
 struct SelectToppingView: View {
-    @State var teaList: TeaList
+    @State var teaFactory: TeaFactory
     @State var tea: Tea
     @State var toppings: [Topping]
     @State var selection: Topping?
@@ -25,7 +25,6 @@ struct SelectToppingView: View {
                 }
                 .onTapGesture {
                     selection = topping
-                    print(selection)
                     
                 }
                 .padding()
@@ -39,7 +38,7 @@ struct SelectToppingView: View {
             HStack{
                 Button(action: {
                     let tuple = orderFactory(tea: tea.name, topping: selection!.name, p1: tea.price, p2: selection!.price)
-                    teaList.addToArray(name: tuple.0, price: tuple.1)
+                    teaFactory.addToArray(name: tuple.0, price: tuple.1)
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 15)
@@ -61,9 +60,3 @@ struct SelectToppingView: View {
         return (n,"\(p)")
     }
 }
-
-//struct SelectToppingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SelectToppingView(teaList: <#TeaList#>, tea:Tea(id: "", name: "", price: ""), toppings: [])
-//    }
-//}
