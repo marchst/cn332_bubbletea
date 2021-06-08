@@ -3,8 +3,10 @@
 #### ใช้ factory pattern - ในส่วนของการสั่งชนิดของเครื่องดื่มและ topping - 
 #### ใช้ strategy pattern - ในส่วนของ -
 
-##
-##
+###
+## Clip Demo
+#### Youtube : https://youtu.be/YjTy8Z83ezM
+###
 
 ## สมาชิก
 #### สิริกร แสงโชคานนท์ 6110613053
