@@ -10,6 +10,8 @@
 		572116D0BF16489A5D90AEB7 /* Pods_BubbleTea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3ED6C98F10BAD69EE4168F8 /* Pods_BubbleTea.framework */; };
 		9048AFF0266D26C7007C43BB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048AFEF266D26C7007C43BB /* MenuView.swift */; };
 		9048AFF3266D34D8007C43BB /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048AFF2266D34D8007C43BB /* SelectView.swift */; };
+		9048AFF5266E6C82007C43BB /* SelectToppingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048AFF4266E6C82007C43BB /* SelectToppingView.swift */; };
+		9048AFFB266E8100007C43BB /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048AFFA266E8100007C43BB /* Order.swift */; };
 		90B1033C2651192300A7F76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1033B2651192300A7F76B /* AppDelegate.swift */; };
 		90B1033E2651192300A7F76B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1033D2651192300A7F76B /* SceneDelegate.swift */; };
 		90B103402651192300A7F76B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1033F2651192300A7F76B /* ContentView.swift */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		9048AFEF266D26C7007C43BB /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		9048AFF2266D34D8007C43BB /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		9048AFF4266E6C82007C43BB /* SelectToppingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectToppingView.swift; sourceTree = "<group>"; };
+		9048AFFA266E8100007C43BB /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		90B103382651192300A7F76B /* BubbleTea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleTea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B1033B2651192300A7F76B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90B1033D2651192300A7F76B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				90B1035F2654016B00A7F76B /* CartView.swift */,
+				9048AFFA266E8100007C43BB /* Order.swift */,
 				90B1035526513F3500A7F76B /* BubbleTeaFactory.swift */,
 				90B1033B2651192300A7F76B /* AppDelegate.swift */,
 				90B103532651310F00A7F76B /* HomeView.swift */,
@@ -115,6 +120,7 @@
 				90B1033D2651192300A7F76B /* SceneDelegate.swift */,
 				90B1033F2651192300A7F76B /* ContentView.swift */,
 				9048AFF2266D34D8007C43BB /* SelectView.swift */,
+				9048AFF4266E6C82007C43BB /* SelectToppingView.swift */,
 				90B1034F26511C3600A7F76B /* GoogleService-Info.plist */,
 				90B103412651192500A7F76B /* Assets.xcassets */,
 				90B103462651192500A7F76B /* LaunchScreen.storyboard */,
@@ -255,9 +261,11 @@
 				90B103522651258200A7F76B /* BubbleTea.swift in Sources */,
 				9048AFF3266D34D8007C43BB /* SelectView.swift in Sources */,
 				90B103582651837F00A7F76B /* Tea.swift in Sources */,
+				9048AFF5266E6C82007C43BB /* SelectToppingView.swift in Sources */,
 				90B1033C2651192300A7F76B /* AppDelegate.swift in Sources */,
 				90B1033E2651192300A7F76B /* SceneDelegate.swift in Sources */,
 				90B103602654016B00A7F76B /* CartView.swift in Sources */,
+				9048AFFB266E8100007C43BB /* Order.swift in Sources */,
 				90B103402651192300A7F76B /* ContentView.swift in Sources */,
 				90B1035C265184C900A7F76B /* TeaList.swift in Sources */,
 			);

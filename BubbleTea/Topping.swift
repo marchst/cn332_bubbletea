@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Topping: Identifiable {
+struct Topping: Identifiable,Hashable {
     let id: String
     let name: String
     let price: String

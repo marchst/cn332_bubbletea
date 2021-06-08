@@ -43,7 +43,7 @@ struct HomeView: View {
                     
                 })
                 .sheet(isPresented: $showSelectView) {
-                    SelectView(showSelectView: $showSelectView)
+                    SelectView(teas: teaList.teas, showSelectView: $showSelectView)
                 }
                 .padding()
                 

@@ -12,6 +12,7 @@ class TeaList: ObservableObject {
     private let collectionName = "teas"
     private let db = Firestore.firestore()
     @Published var teas: [Tea] = []
+    @Published var orders: [Order] = []
     
     init() {
         loadAll()
@@ -55,6 +56,22 @@ class TeaList: ObservableObject {
 //        loadAll()
 //    }
 //
+    func addToArray(name: String, price: String){
+        orders.append(Order(name: name,price: price))
+    }
+    
+    func clearArray() {
+        orders = []
+    }
+    
+    func allPrice() -> String {
+        var allprice = 0
+        for order in orders {
+            allprice = allprice + Int(order.price)!
+        }
+        return "\(allprice)"
+    }
+
     private func loadAll() {
         db.collection(collectionName).getDocuments { (snapshot, error) in
             if let error = error {
